@@ -1,8 +1,8 @@
-import { transformArrayUser, transformSingleUser } from "../dto/users.dto.js";
-import { UserRepository } from "../persistence/users.repository.js";
+import { transformArrayUser, transformSingleUser } from '../dto/users.dto.js';
+import { UserRepository } from '../persistence/users.repository.js';
 const userRepository = new UserRepository();
 export class UserServices {
-  create = async (data) => {
+  create = async data => {
     try {
       const newUser = {
         first_name: data.first_name,
@@ -14,16 +14,16 @@ export class UserServices {
       return transformSingleUser(userAdded);
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
-  createMany = async (data) => {
+  createMany = async data => {
     try {
       const savedUsers = await userRepository.createMany(data);
       return savedUsers;
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
 
@@ -33,17 +33,16 @@ export class UserServices {
       return transformArrayUser(users);
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
-  getUser = async (params) => {
+  getUser = async params => {
     try {
       const user = await userRepository.getByParam(params);
-
       return user;
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
   updateUser = async (uid, updates) => {
@@ -52,15 +51,15 @@ export class UserServices {
       return transformSingleUser(udpatedUser);
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
-  deleteUser = async (uid) => {
+  deleteUser = async uid => {
     try {
       return await userRepository.delete(uid);
     } catch (error) {
       console.error(`services error:${error}`);
-      throw new Error("internal server Error");
+      throw new Error('internal server Error');
     }
   };
 }

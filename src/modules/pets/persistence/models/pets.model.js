@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const collection = "Pet";
+const collection = 'Pet';
 
 const schema = new mongoose.Schema({
   name: {
@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
   },
   owner: {
     type: mongoose.SchemaTypes.ObjectId,
-    ref: "Users",
+    ref: 'Users',
   },
   image: String,
 });
